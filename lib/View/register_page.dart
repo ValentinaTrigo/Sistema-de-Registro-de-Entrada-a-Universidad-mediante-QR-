@@ -25,8 +25,8 @@ class RegisterPage extends StatelessWidget {
     if (response.statusCode == 200) {
       // Manejar la respuesta exitosa
       print('Registro exitoso');
-      // Redirigir a otra pantalla después del registro exitoso
-      Navigator.pushReplacementNamed(context, '/login');
+      // Redirigir a la pantalla de login después del registro exitoso
+      Navigator.pushReplacementNamed(context, '/');
     } else {
       // Manejar posibles errores
       print('Error en el registro: ${response.body}');

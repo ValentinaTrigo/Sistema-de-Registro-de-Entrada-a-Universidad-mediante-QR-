@@ -17,18 +17,20 @@ if(isset($_POST['id'])) {
     // Escapar el ID para prevenir inyección SQL
     $id = $conn->real_escape_string($id);
 
+    // Consultas SQL para eliminar registros relacionados en attendance y student_course si existen
+    $sql_delete_attendance = "DELETE FROM attendance WHERE student_id=$id";
+    $sql_delete_student_course = "DELETE FROM student_course WHERE student_id=$id";
     // Consulta SQL para eliminar el estudiante
     $sql_delete_student = "DELETE FROM students WHERE id=$id";
-
-    // Consulta SQL para eliminar registros relacionados en student_course si existen
-    $sql_delete_student_course = "DELETE FROM student_course WHERE student_id=$id";
 
     // Iniciar transacción para asegurar operaciones atómicas
     $conn->begin_transaction();
 
-    // Intentar ejecutar ambas consultas
-    if ($conn->query($sql_delete_student) === TRUE && $conn->query($sql_delete_student_course) === TRUE) {
-        $conn->commit(); // Confirmar la transacción si ambas consultas tienen éxito
+    // Intentar ejecutar todas las consultas
+    if ($conn->query($sql_delete_attendance) === TRUE && 
+        $conn->query($sql_delete_student_course) === TRUE && 
+        $conn->query($sql_delete_student) === TRUE) {
+        $conn->commit(); // Confirmar la transacción si todas las consultas tienen éxito
         echo json_encode(["status" => "success", "message" => "Estudiante eliminado correctamente"]);
     } else {
         $conn->rollback(); // Revertir la transacción si alguna consulta falla

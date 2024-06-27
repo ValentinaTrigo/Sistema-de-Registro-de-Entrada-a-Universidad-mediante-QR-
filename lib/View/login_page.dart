@@ -9,7 +9,6 @@ class LoginPage extends StatelessWidget {
   void _loginUser(BuildContext context, String email, String password) async {
     // URL de tu script PHP en el servidor
     var url = Uri.parse('http://localhost/ProyectoFlutter/appregister/lib/Backend/login.php');
- // Actualiza la ruta aquí
 
     // Datos a enviar al servidor
     var data = {
@@ -65,39 +64,45 @@ class LoginPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Login'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: emailController,
-              decoration: const InputDecoration(labelText: 'Email'),
-            ),
-            TextField(
-              controller: passwordController,
-              decoration: const InputDecoration(labelText: 'Password'),
-              obscureText: true,
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Obtener los valores de los campos de texto
-                String email = emailController.text;
-                String password = passwordController.text;
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Container(
+            constraints: BoxConstraints(maxWidth: 400), // Ancho máximo del contenedor
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextField(
+                  controller: emailController,
+                  decoration: const InputDecoration(labelText: 'Email'),
+                ),
+                const SizedBox(height: 12),
+                TextField(
+                  controller: passwordController,
+                  decoration: const InputDecoration(labelText: 'Password'),
+                  obscureText: true,
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    // Obtener los valores de los campos de texto
+                    String email = emailController.text;
+                    String password = passwordController.text;
 
-                // Llamar a la función para iniciar sesión
-                _loginUser(context, email, password);
-              },
-              child: const Text('Login'),
+                    // Llamar a la función para iniciar sesión
+                    _loginUser(context, email, password);
+                  },
+                  child: const Text('Login'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/register');
+                  },
+                  child: const Text('Register'),
+                ),
+              ],
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/register');
-              },
-              child: const Text('Register'),
-            ),
-          ],
+          ),
         ),
       ),
     );

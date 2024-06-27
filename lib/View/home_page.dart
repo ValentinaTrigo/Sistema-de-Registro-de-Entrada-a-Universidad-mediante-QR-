@@ -105,8 +105,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
+            child: Center(
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: DataTable(
@@ -153,17 +152,19 @@ class CourseDetailPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Details for ${course["nombre"]}'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: DataTable(
-            columns: const [
-              DataColumn(label: Text('Nombre Estudiante')),
-              // DataColumn(label: Text('Teléfono')),
-              // DataColumn(label: Text('Email')),
-            ],
-            rows: studentRows,
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: DataTable(
+              columns: const [
+                DataColumn(label: Text('Nombre Estudiante')),
+                // DataColumn(label: Text('Teléfono')),
+                // DataColumn(label: Text('Email')),
+              ],
+              rows: studentRows,
+            ),
           ),
         ),
       ),
