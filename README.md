@@ -1,16 +1,2 @@
-# appregister
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+*Sistema de Registro de Entrada a Universidad mediante Reconocimiento Facial: 
+Este proyecto implementa un sistema de registro de entrada a universidades mediante reconocimiento facial, diseñado para mejorar la seguridad y eficiencia del acceso estudiantil. Utilizando la biblioteca face_recognition en Python, permite a los usuarios autenticarse de manera segura y registrar sus entradas mediante escaneo facial. Los roles de usuario incluyen administradores con gestión completa del sistema y docentes con acceso a la asistencia de estudiantes. La aplicación, desarrollada con Flutter para la interfaz y MySQL a través de PHPMyAdmin para la base de datos.
